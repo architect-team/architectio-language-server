@@ -4,5 +4,5 @@
  *--------------------------------------------------------------------------------------------*/
 
 export enum YamlCommands {
-  JUMP_TO_SCHEMA = 'jumpToSchema',
+  JUMP_TO_SCHEMA = 'jumpToArchitectioSchema',
 }
