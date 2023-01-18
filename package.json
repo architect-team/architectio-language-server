@@ -85,7 +85,7 @@
     "compile:umd": "tsc -p ./tsconfig.umd.json",
     "compile:esm": "tsc -p ./tsconfig.esm.json",
     "check-dependencies": "node ./scripts/check-dependencies.js",
-    "pull-remote": "git pull https://github.com/architect-team/architectio-language-server.git main"
+    "pull-remote": "git pull https://github.com/architect-team/architectio-language-server.git"
   },
   "nyc": {
     "extension": [
