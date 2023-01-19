@@ -17,7 +17,7 @@ export function registerCommands(commandExecutor: CommandExecutor, connection: C
     if (!uri.startsWith('file') && !/^[a-z]:[\\/]/i.test(uri)) {
       const origUri = URI.parse(uri);
       const customUri = URI.from({
-        scheme: 'json-schema',
+        scheme: 'architectio-schema',
         authority: origUri.authority,
         path: origUri.path.endsWith('.json') ? origUri.path : origUri.path + '.json',
         fragment: uri,

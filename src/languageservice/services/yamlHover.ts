@@ -130,18 +130,12 @@ export class YAMLHover {
               }
             }
             if (s.schema.anyOf && isAllSchemasMatched(node, matchingSchemas, s.schema)) {
-              //if append title and description of all matched schemas on hover
-              title = '';
+              //if append description of all matched schemas on hover
               markdownDescription = '';
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
               s.schema.anyOf.forEach((childSchema: JSONSchema, index: number) => {
-                title += childSchema.title || s.schema.closestTitle || '';
                 markdownDescription += childSchema.markdownDescription || toMarkdown(childSchema.description) || '';
-                if (index !== s.schema.anyOf.length - 1) {
-                  title += ' || ';
-                  markdownDescription += ' || ';
-                }
               });
-              title = removePipe(title);
               markdownDescription = removePipe(markdownDescription);
             }
             if (s.schema.examples) {
@@ -153,9 +147,6 @@ export class YAMLHover {
           return true;
         });
         let result = '';
-        if (title) {
-          result = '#### ' + toMarkdown(title);
-        }
         if (markdownDescription) {
           if (result.length > 0) {
             result += '\n\n';

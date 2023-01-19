@@ -75,7 +75,7 @@ export class YamlCodeActions {
     for (const schemaUri of schemaUriToDiagnostic.keys()) {
       const action = CodeAction.create(
         `Jump to schema location (${path.basename(schemaUri)})`,
-        Command.create('JumpToSchema', YamlCommands.JUMP_TO_SCHEMA, schemaUri)
+        Command.create('Architect.io Component Schema', YamlCommands.JUMP_TO_SCHEMA, schemaUri)
       );
       action.diagnostics = schemaUriToDiagnostic.get(schemaUri);
       result.push(action);

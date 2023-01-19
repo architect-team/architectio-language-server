@@ -12,7 +12,9 @@ import { JSONSchema } from '../jsonSchema';
 import { Telemetry } from '../telemetry';
 import { getSchemaUrls } from '../utils/schemaUrls';
 import { convertErrorToTelemetryMsg } from '../utils/objects';
-import { getSchemaTitle } from '../utils/schemaUtils';
+
+export const ARCHITECTIO_SCHEMA_URI =
+  'https://raw.githubusercontent.com/architect-team/architect-cli/main/src/dependency-manager/schema/architect.schema.json';
 
 export class YamlCodeLens {
   constructor(private schemaService: YAMLSchemaService, private readonly telemetry: Telemetry) {}
@@ -29,15 +31,13 @@ export class YamlCodeLens {
           schemaUrls = new Map([...getSchemaUrls(schema?.schema), ...schemaUrls]);
         }
       }
-      for (const urlToSchema of schemaUrls) {
-        const lens = CodeLens.create(Range.create(0, 0, 0, 0));
-        lens.command = {
-          title: getSchemaTitle(urlToSchema[1], urlToSchema[0]),
-          command: YamlCommands.JUMP_TO_SCHEMA,
-          arguments: [urlToSchema[0]],
-        };
-        result.push(lens);
-      }
+      const lens = CodeLens.create(Range.create(0, 0, 0, 0));
+      lens.command = {
+        title: 'Architect.io Component Schema',
+        command: YamlCommands.JUMP_TO_SCHEMA,
+        arguments: [ARCHITECTIO_SCHEMA_URI],
+      };
+      result.push(lens);
     } catch (err) {
       this.telemetry.sendError('yaml.codeLens.error', { error: convertErrorToTelemetryMsg(err) });
     }
