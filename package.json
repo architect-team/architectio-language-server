@@ -1,22 +1,9 @@
 {
   "name": "architectio-language-server",
   "description": "architectio language server",
-  "version": "1.12.0",
-  "author": "Gorkem Ercan (Red Hat)",
+  "version": "1.0.0",
+  "author": "Architect.io",
   "license": "MIT",
-  "contributors": [
-    {
-      "name": "Joshua Pinkney",
-      "email": "joshpinkney@gmail.com"
-    },
-    {
-      "name": "Yevhen Vydolob",
-      "email": "yvydolob@redhat.com"
-    },
-    {
-      "name": "Google LLC"
-    }
-  ],
   "bin": {
     "architectio-language-server": "./bin/architectio-language-server"
   },
